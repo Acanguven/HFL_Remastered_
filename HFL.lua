@@ -1,6 +1,5 @@
 class 'CScriptUpdate'
 	function CScriptUpdate:__init(LocalVersion,UseHttps, Host, VersionPath, ScriptPath, SavePath, CallbackUpdate, CallbackNoUpdate, CallbackNewVersion,CallbackError)
-	    if not ScriptologyAutoUpdate then return end
 	    self.LocalVersion = LocalVersion
 	    self.Host = Host
 	    self.VersionPath = '/BoL/TCPUpdater/GetScript'..(UseHttps and '5' or '6')..'.php?script='..self:Base64Encode(self.Host..VersionPath)..'&rand='..random(99999999)
@@ -18,7 +17,7 @@ class 'CScriptUpdate'
 
   function CScriptUpdate:print(str)
     print('<font color="#FFFFFF">'..os.clock()..': '..str)
-  end
+  ends
 
   function CScriptUpdate:CreateSocket(url)
     if not self.LuaSocket then
@@ -184,6 +183,8 @@ class 'CScriptUpdate'
     end
   end
 
+HFLVERSION = 0.2
+
 function Update()
   local ToUpdate = {}
   ToUpdate.UseHttps = true
@@ -195,5 +196,7 @@ function Update()
   ToUpdate.CallbackNoUpdate = function(OldVersion) end
   ToUpdate.CallbackNewVersion = function(NewVersion) Msg("New version found v"..NewVersion..". Please wait until it's downloaded.") end
   ToUpdate.CallbackError = function(NewVersion) Msg("There was an error while updating.") end
-  CScriptUpdate(ScriptologyVersion,ToUpdate.UseHttps, ToUpdate.Host, ToUpdate.VersionPath, ToUpdate.ScriptPath, ToUpdate.SavePath, ToUpdate.CallbackUpdate,ToUpdate.CallbackNoUpdate, ToUpdate.CallbackNewVersion,ToUpdate.CallbackError)
+  CScriptUpdate(HFLVERSION,ToUpdate.UseHttps, ToUpdate.Host, ToUpdate.VersionPath, ToUpdate.ScriptPath, ToUpdate.SavePath, ToUpdate.CallbackUpdate,ToUpdate.CallbackNoUpdate, ToUpdate.CallbackNewVersion,ToUpdate.CallbackError)
 end
+
+Update()
