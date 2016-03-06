@@ -183,7 +183,7 @@ class 'CScriptUpdate'
     end
   end
 
-HFLVERSION = 0.1
+HFLVERSION = 0.2
 
 function Update()
   local ToUpdate = {}
