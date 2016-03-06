@@ -194,10 +194,10 @@ function Update()
   ToUpdate.VersionPath = "/thelaw44/HFL_Remastered_/master/HFL.version"
   ToUpdate.ScriptPath =  "/thelaw44/HFL_Remastered_/master/HFL.lua"
   ToUpdate.SavePath = SCRIPT_PATH..GetCurrentEnv().FILE_NAME
-  ToUpdate.CallbackUpdate = function(NewVersion,OldVersion) Msg("Updated from v"..OldVersion.." to "..NewVersion..". Please press F9 twice to reload.") end
+  ToUpdate.CallbackUpdate = function(NewVersion,OldVersion) print("Updated from v"..OldVersion.." to "..NewVersion..". Please press F9 twice to reload.") end
   ToUpdate.CallbackNoUpdate = function(OldVersion) end
-  ToUpdate.CallbackNewVersion = function(NewVersion) Msg("New version found v"..NewVersion..". Please wait until it's downloaded.") end
-  ToUpdate.CallbackError = function(NewVersion) Msg("There was an error while updating.") end
+  ToUpdate.CallbackNewVersion = function(NewVersion) print("New version found v"..NewVersion..". Please wait until it's downloaded.") end
+  ToUpdate.CallbackError = function(NewVersion) print("There was an error while updating.") end
   CScriptUpdate(HFLVERSION,ToUpdate.UseHttps, ToUpdate.Host, ToUpdate.VersionPath, ToUpdate.ScriptPath, ToUpdate.SavePath, ToUpdate.CallbackUpdate,ToUpdate.CallbackNoUpdate, ToUpdate.CallbackNewVersion,ToUpdate.CallbackError)
 end
 
