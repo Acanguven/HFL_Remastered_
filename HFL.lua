@@ -2,8 +2,8 @@ class 'CScriptUpdate'
 	function CScriptUpdate:__init(LocalVersion,UseHttps, Host, VersionPath, ScriptPath, SavePath, CallbackUpdate, CallbackNoUpdate, CallbackNewVersion,CallbackError)
 	    self.LocalVersion = LocalVersion
 	    self.Host = Host
-	    self.VersionPath = '/BoL/TCPUpdater/GetScript'..(UseHttps and '5' or '6')..'.php?script='..self:Base64Encode(self.Host..VersionPath)..'&rand='..random(99999999)
-	    self.ScriptPath = '/BoL/TCPUpdater/GetScript'..(UseHttps and '5' or '6')..'.php?script='..self:Base64Encode(self.Host..ScriptPath)..'&rand='..random(99999999)
+	    self.VersionPath = '/BoL/TCPUpdater/GetScript'..(UseHttps and '5' or '6')..'.php?script='..self:Base64Encode(self.Host..VersionPath)..'&rand='..math.random(99999999)
+	    self.ScriptPath = '/BoL/TCPUpdater/GetScript'..(UseHttps and '5' or '6')..'.php?script='..self:Base64Encode(self.Host..ScriptPath)..'&rand='..math.random(99999999)
 	    self.SavePath = SavePath
 	    self.CallbackUpdate = CallbackUpdate
 	    self.CallbackNoUpdate = CallbackNoUpdate
@@ -17,7 +17,7 @@ class 'CScriptUpdate'
 
   function CScriptUpdate:print(str)
     print('<font color="#FFFFFF">'..os.clock()..': '..str)
-  ends
+  end
 
   function CScriptUpdate:CreateSocket(url)
     if not self.LuaSocket then
@@ -183,7 +183,7 @@ class 'CScriptUpdate'
     end
   end
 
-HFLVERSION = 0.2
+HFLVERSION = 0.1
 
 function Update()
   local ToUpdate = {}
